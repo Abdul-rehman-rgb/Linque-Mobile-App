@@ -1,6 +1,6 @@
 // import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { router } from 'expo-router';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import {
   StatusBar,
   StyleSheet,
@@ -43,9 +43,9 @@ export default function LoginScreen({ navigation }: Props) {
   };
 
   // redirect straight to home
-  useEffect(() => {
-    router.replace("/customer-home")
-  }, [])
+  // useEffect(() => {
+  //   router.replace("/customer-home")
+  // }, [])
   
 
   return (
