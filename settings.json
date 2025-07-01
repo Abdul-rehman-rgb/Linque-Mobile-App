@@ -1,0 +1,24 @@
+{
+  "editor.tokenColorCustomizations": {
+    "textMateRules": [
+      {
+        "scope": "entity.name.function",
+        "settings": {
+          "foreground": "#FFD700" // Yellow for functions
+        }
+      },
+      {
+        "scope": "variable",
+        "settings": {
+          "foreground": "#569CD6" // Blue for variables
+        }
+      },
+      {
+        "scope": "support.type, support.class, support.function",
+        "settings": {
+          "foreground": "#4EC9B0" // Green for library/3rd party code
+        }
+      }
+    ]
+  }
+} 

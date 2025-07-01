@@ -1,14 +1,17 @@
-// import type { NativeStackScreenProps } from '@react-navigation/native-stack';
-import { router } from 'expo-router';
-import React, { useState } from 'react';
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import type { NativeStackScreenProps } from "@react-navigation/native-stack";
+import axios from "axios";
+import { router } from "expo-router";
+import React, { useState } from "react";
 import {
+  Alert,
+  Image,
   StatusBar,
-  StyleSheet,
   Text,
   TextInput,
   TouchableOpacity,
-  View
-} from 'react-native';
+  View,
+} from "react-native";
 
 type RootStackParamList = {
   Splash: undefined;
@@ -17,82 +20,120 @@ type RootStackParamList = {
   CustomerHome: undefined;
 };
 
-type Props = NativeStackScreenProps<RootStackParamList, 'Login'>;
+type Props = NativeStackScreenProps<RootStackParamList, "Login">;
 
 export default function LoginScreen({ navigation }: Props) {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const handleLogin = async () => {
-    // try {
-    //   const baseURL = 'http://192.168.21.95:5000';
+    try {
+      const baseURL = "http://192.168.21.11:5000";
 
-    //   const res = await axios.post(`${baseURL}/api/auth/login`, { email, password });
+      const res = await axios.post(`${baseURL}/api/auth/login`, {
+        email,
+        password,
+      });
 
-    //   if (res.data.success) {
-    //     await AsyncStorage.setItem('token', res.data.token);
-    //     router.replace('/customer-home'); // Later: redirect based on role
-    //   }
-    // } catch (err: any) {
-    //   Alert.alert('Login Failed', err.response?.data?.error || 'Server Error');
-    // }
+      if (res.data.success) {
+        await AsyncStorage.setItem("token", res.data.token);
+        router.replace("/customer-home");
+      }
+    } catch (err: any) {
+      Alert.alert("Login Failed", err.response?.data?.error || "Server Error");
+    }
 
-    if(email == "adnan" && password == "123"){
-      router.replace("/customer-home")
+    if (email == "adnan" && password == "123") {
+      router.replace("/customer-home");
     }
   };
 
-  // redirect straight to home
-  // useEffect(() => {
-  //   router.replace("/customer-home")
-  // }, [])
-  
-
   return (
     <>
-      <StatusBar barStyle="light-content" backgroundColor="#000" />
-      <View style={styles.container}>
-        <View style={styles.content}>
-          <View style={styles.header}>
-            <Text style={styles.heading}>Welcome back </Text>
-            <Text style={styles.subtitle}>Sign in to continue</Text>
+      <StatusBar className="" />
+      <View className="h-[150px]">
+        <Image
+          source={require("../assets/images/gray-bg-3.avif")}
+          className="h-[400px]"
+        />
+      </View>
+
+      <View className="flex-1 bg-[#8B5CF6] rounded-tl-[40px] rounded-tr-[40px] relative">
+        <View className=" px-7 pt-[50px] ">
+          <View className="mb-12">
+            <Text className="text-4xl font-bold text-white mb-2 tracking-tight">
+              Sign In
+            </Text>
+            <Text className="text-lg font-normal text-white">
+              Please Sign in to continue
+            </Text>
           </View>
 
-          <View style={styles.form}>
-            <View style={styles.inputContainer}>
-              <Text style={styles.label}>Email</Text>
+          <View className="">
+            <Image
+              source={require("../assets/images/pengiun-logo.png")}
+              className="w-44 h-44 absolute bottom-[100px] right-0"
+            />
+          </View>
+
+          <View className="gap-6">
+            <View className="gap-2">
+              <Text className="text-sm text-white mb-2 font-medium">
+                Username/Email
+              </Text>
               <TextInput
-                style={styles.input}
+                className="bg-transparent border border-white rounded-full p-4  text-white text-base font-normal"
                 placeholder="Enter your email"
-                placeholderTextColor="#666"
+                placeholderTextColor="white"
                 autoCapitalize="none"
                 keyboardType="email-address"
                 value={email}
                 onChangeText={setEmail}
+                importantForAutofill="no"
+                autoComplete="off"
+                textContentType="none"
               />
             </View>
 
-            <View style={styles.inputContainer}>
-              <Text style={styles.label}>Password</Text>
+            <View className="">
+              <Text className="text-sm text-white mb-2 font-medium">
+                Password
+              </Text>
               <TextInput
-                style={styles.input}
+                className="bg-transparent border border-white rounded-full p-4  text-white text-base font-normal"
                 placeholder="Enter your password"
-                placeholderTextColor="#666"
+                placeholderTextColor="white"
                 value={password}
                 onChangeText={setPassword}
                 secureTextEntry
+                importantForAutofill="no"
+                autoComplete="off"
+                textContentType="none"
               />
             </View>
+          </View>
 
-            <TouchableOpacity style={styles.button} onPress={handleLogin}>
-              <Text style={styles.buttonText}>Sign In</Text>
+          <View>
+            <TouchableOpacity
+              className="bg-white py-4 rounded-full mt-4 shadow-sm"
+              onPress={handleLogin}
+            >
+              <Text className="text-[#8B5CF6] text-center text-base font-semibold">
+                Log In
+              </Text>
             </TouchableOpacity>
           </View>
 
-          <View style={styles.footer}>
-            <Text style={styles.footerText}>Don't have an account? </Text>
-            <TouchableOpacity onPress={() => router.navigate('/signup')}>
-              <Text style={styles.link}>Sign Up</Text>
+          <View className="flex-row justify-center items-center mt-8">
+            <Text className="text-white text-sm">Forgot Password?</Text>
+          </View>
+
+          <View className="flex-row justify-center items-center mt-8">
+            <Text className="text-gray-400 text-sm">
+              Don't have an account?{" "}
+            </Text>
+            <TouchableOpacity onPress={() => router.navigate("/signup")}>
+              <Text className="text-white text-sm font-semibold">Sign Up</Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -100,91 +141,3 @@ export default function LoginScreen({ navigation }: Props) {
     </>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#000',
-  },
-  content: {
-    flex: 1,
-    paddingHorizontal: 24,
-    paddingTop: 80,
-    paddingBottom: 40,
-    justifyContent: 'space-between',
-  },
-  header: {
-    marginBottom: 48,
-  },
-  heading: {
-    fontSize: 32,
-    fontWeight: '700',
-    color: '#fff',
-    marginBottom: 8,
-    letterSpacing: -0.5,
-  },
-  subtitle: {
-    fontSize: 16,
-    color: '#999',
-    fontWeight: '400',
-  },
-  form: {
-    flex: 1,
-    justifyContent: 'center',
-    marginTop: -40,
-  },
-  inputContainer: {
-    marginBottom: 24,
-  },
-  label: {
-    fontSize: 14,
-    color: '#fff',
-    marginBottom: 8,
-    fontWeight: '500',
-  },
-  input: {
-    backgroundColor: '#111',
-    borderWidth: 1,
-    borderColor: '#333',
-    padding: 16,
-    borderRadius: 12,
-    fontSize: 16,
-    color: '#fff',
-    fontWeight: '400',
-  },
-  button: {
-    backgroundColor: '#fff',
-    paddingVertical: 16,
-    borderRadius: 12,
-    marginTop: 16,
-    shadowColor: '#fff',
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.1,
-    shadowRadius: 4,
-    elevation: 3,
-  },
-  buttonText: {
-    color: '#000',
-    textAlign: 'center',
-    fontSize: 16,
-    fontWeight: '600',
-  },
-  footer: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginTop: 32,
-  },
-  footerText: {
-    color: '#999',
-    fontSize: 14,
-  },
-  link: {
-    color: '#fff',
-    fontSize: 14,
-    fontWeight: '600',
-  },
-});

@@ -1,215 +1,192 @@
-// import type { NativeStackScreenProps } from '@react-navigation/native-stack';
-import axios from 'axios';
-import { router } from 'expo-router';
-import React, { useState } from 'react';
+import axios from "axios";
+import { router } from "expo-router";
+import React, { useState } from "react";
 import {
   Alert,
-  StyleSheet,
+  Image,
+  StatusBar,
   Text,
   TextInput,
   TouchableOpacity,
-  View
-} from 'react-native';
+  View,
+} from "react-native";
 
-type RootStackParamList = {
-  Splash: undefined;
-  Login: undefined;
-  Signup: undefined;
-  CustomerHome: undefined;
-};
-
-type Props = NativeStackScreenProps<RootStackParamList, 'Signup'>;
-
-export default function SignupScreen({ navigation }: Props) {
-  const [email, setEmail] = useState('');
-  const [name, setName] = useState('');
-  const [password, setPassword] = useState('');
+export default function SignupScreen() {
+  const [email, setEmail] = useState("");
+  const [name, setName] = useState("");
+  const [username, setUsername] = useState("");
+  const [dob, setDob] = useState("");
+  const [gender, setGender] = useState("");
+  const [phone, setPhone] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
 
   const handleSignup = async () => {
+    if (password !== confirmPassword) {
+      Alert.alert("Error", "Passwords do not match");
+      return;
+    }
     try {
-      const baseURL = 'http://192.168.21.95:5000';
-
+      const baseURL = "http://192.168.21.11:5000";
       const res = await axios.post(`${baseURL}/api/auth/signup`, {
         name,
+        username,
         email,
+        dob,
+        gender,
+        phone,
         password,
       });
-
       if (res.data.success) {
-        Alert.alert('Success', 'Account created!');
-        router.replace('/login');
+        Alert.alert("Success", "Account created!");
+        router.replace("/login");
       }
     } catch (err: any) {
-      Alert.alert('Signup Failed', err.response?.data?.error || 'Server Error');
+      Alert.alert("Signup Failed", err.response?.data?.error || "Server Error");
     }
   };
 
   return (
-    <View style={styles.container}>
-      <View style={styles.formContainer}>
-        <View style={styles.headerSection}>
-          <Text style={styles.heading}>Create Account</Text>
-          <Text style={styles.subtitle}>Join us today</Text>
+    <>
+      <StatusBar className="" />
+      <View className="h-[150px]">
+        <Image
+          source={require("../assets/images/gray-bg-3.avif")}
+          className="h-[400px]"
+        />
+      </View>
+      <View className="flex-1 bg-[#8B5CF6] rounded-tl-[40px] rounded-tr-[40px] relative">
+        {/* Penguin logo in white circle */}
+        <View className="absolute -top-[110px] right-[15] z-10">
+          <Image
+            source={require("../assets/images/pengiun-logo.png")}
+            className="w-44 h-44"
+            resizeMode="contain"
+          />
         </View>
-
-        <View style={styles.inputContainer}>
-          <View style={styles.inputWrapper}>
+        <View className="px-7 pt-[40px]">
+          {/* Header */}
+          <View className="mb-8">
+            <Text className="text-3xl font-bold text-white mb-1 tracking-tight">
+              Sign Up to <Text className="font-extrabold">LINQUE</Text>
+            </Text>
+            <Text className="text-base font-medium text-white opacity-80">
+              Just a few quick things to get started
+            </Text>
+          </View>
+          {/* Form Fields */}
+          <View className="gap-4 mb-6">
             <TextInput
-              style={styles.input}
+              className="border border-white rounded-full px-5 py-3 text-white text-base font-normal bg-transparent"
               placeholder="Full Name"
-              placeholderTextColor="#A0A0A0"
+              placeholderTextColor="white"
               value={name}
               onChangeText={setName}
+              importantForAutofill="no"
+              autoComplete="off"
+              textContentType="none"
             />
-          </View>
-
-          <View style={styles.inputWrapper}>
             <TextInput
-              style={styles.input}
+              className="border border-white rounded-full px-5 py-3 text-white text-base font-normal bg-transparent"
+              placeholder="User Name"
+              placeholderTextColor="white"
+              value={username}
+              onChangeText={setUsername}
+              importantForAutofill="no"
+              autoComplete="off"
+              textContentType="none"
+            />
+            <TextInput
+              className="border border-white rounded-full px-5 py-3 text-white text-base font-normal bg-transparent"
               placeholder="Email Address"
-              placeholderTextColor="#A0A0A0"
-              value={email}
-              onChangeText={setEmail}
+              placeholderTextColor="white"
               autoCapitalize="none"
               keyboardType="email-address"
+              value={email}
+              onChangeText={setEmail}
+              importantForAutofill="no"
+              autoComplete="off"
+              textContentType="none"
             />
-          </View>
-
-          <View style={styles.inputWrapper}>
+            {/* Row: Date of Birth & Gender */}
+            <View className="flex-row gap-3">
+              <TextInput
+                className="flex-1 border border-white rounded-full px-5 py-3 text-white text-base font-normal bg-transparent"
+                placeholder="Date of Birth"
+                placeholderTextColor="white"
+                value={dob}
+                onChangeText={setDob}
+                importantForAutofill="no"
+                autoComplete="off"
+                textContentType="none"
+              />
+              <TextInput
+                className="flex-1 border border-white rounded-full px-5 py-3 text-white text-base font-normal bg-transparent"
+                placeholder="Gender"
+                placeholderTextColor="white"
+                value={gender}
+                onChangeText={setGender}
+                importantForAutofill="no"
+                autoComplete="off"
+                textContentType="none"
+              />
+            </View>
             <TextInput
-              style={styles.input}
+              className="border border-white rounded-full px-5 py-3 text-white text-base font-normal bg-transparent"
+              placeholder="Phone Number"
+              placeholderTextColor="white"
+              keyboardType="phone-pad"
+              value={phone}
+              onChangeText={setPhone}
+              importantForAutofill="no"
+              autoComplete="off"
+              textContentType="none"
+            />
+            <TextInput
+              className="border border-white rounded-full px-5 py-3 text-white text-base font-normal bg-transparent"
               placeholder="Password"
-              placeholderTextColor="#A0A0A0"
+              placeholderTextColor="white"
               value={password}
               onChangeText={setPassword}
               secureTextEntry
+              importantForAutofill="no"
+              autoComplete="off"
+              textContentType="none"
+            />
+            <TextInput
+              className="border border-white rounded-full px-5 py-3 text-white text-base font-normal bg-transparent"
+              placeholder="Confirm Password"
+              placeholderTextColor="white"
+              value={confirmPassword}
+              onChangeText={setConfirmPassword}
+              secureTextEntry
+              importantForAutofill="no"
+              autoComplete="off"
+              textContentType="none"
             />
           </View>
+          {/* Button */}
+          <TouchableOpacity
+            className="bg-white py-4 rounded-full mb-6 shadow-sm"
+            onPress={handleSignup}
+          >
+            <Text className="text-[#8B5CF6] text-center text-base font-semibold">
+              Create Account
+            </Text>
+          </TouchableOpacity>
+          {/* Footer */}
+          <View className="flex-row justify-center items-center mb-4">
+            <Text className="text-white text-base opacity-80">
+              Already have an account?{" "}
+            </Text>
+            <TouchableOpacity onPress={() => router.navigate("/login")}>
+              <Text className="text-white text-base font-bold underline">
+                Sign In
+              </Text>
+            </TouchableOpacity>
+          </View>
         </View>
-
-        <TouchableOpacity style={styles.button} onPress={handleSignup}>
-          <Text style={styles.buttonText}>Sign Up</Text>
-        </TouchableOpacity>
-
-        <View style={styles.divider}>
-          <View style={styles.dividerLine} />
-          <Text style={styles.dividerText}>or</Text>
-          <View style={styles.dividerLine} />
-        </View>
-
-        <TouchableOpacity 
-          style={styles.linkButton} 
-          onPress={() => router.navigate('/login')}
-        >
-          <Text style={styles.linkText}>
-            Already have an account? <Text style={styles.linkTextBold}>Sign In</Text>
-          </Text>
-        </TouchableOpacity>
       </View>
-    </View>
+    </>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#FAFAFA',
-    paddingHorizontal: 24,
-  },
-  formContainer: {
-    flex: 1,
-    justifyContent: 'center',
-    maxWidth: 400,
-    alignSelf: 'center',
-    width: '100%',
-  },
-  headerSection: {
-    marginBottom: 48,
-    alignItems: 'center',
-  },
-  heading: {
-    fontSize: 32,
-    fontWeight: '700',
-    color: '#1A1A1A',
-    marginBottom: 8,
-    letterSpacing: -0.5,
-  },
-  subtitle: {
-    fontSize: 16,
-    color: '#6B7280',
-    fontWeight: '400',
-  },
-  inputContainer: {
-    marginBottom: 32,
-  },
-  inputWrapper: {
-    marginBottom: 20,
-    backgroundColor: '#FFFFFF',
-    borderRadius: 16,
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.04,
-    shadowRadius: 8,
-    elevation: 2,
-  },
-  input: {
-    paddingHorizontal: 20,
-    paddingVertical: 18,
-    fontSize: 16,
-    color: '#1A1A1A',
-    fontWeight: '500',
-  },
-  button: {
-    backgroundColor: '#1A1A1A',
-    paddingVertical: 18,
-    borderRadius: 16,
-    marginBottom: 24,
-    shadowColor: '#1A1A1A',
-    shadowOffset: {
-      width: 0,
-      height: 4,
-    },
-    shadowOpacity: 0.15,
-    shadowRadius: 12,
-    elevation: 4,
-  },
-  buttonText: {
-    color: '#FFFFFF',
-    textAlign: 'center',
-    fontSize: 16,
-    fontWeight: '600',
-    letterSpacing: 0.2,
-  },
-  divider: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginBottom: 24,
-  },
-  dividerLine: {
-    flex: 1,
-    height: 1,
-    backgroundColor: '#E5E7EB',
-  },
-  dividerText: {
-    paddingHorizontal: 16,
-    fontSize: 14,
-    color: '#9CA3AF',
-    fontWeight: '500',
-  },
-  linkButton: {
-    paddingVertical: 12,
-  },
-  linkText: {
-    textAlign: 'center',
-    fontSize: 15,
-    color: '#6B7280',
-    fontWeight: '400',
-  },
-  linkTextBold: {
-    color: '#1A1A1A',
-    fontWeight: '600',
-  },
-});

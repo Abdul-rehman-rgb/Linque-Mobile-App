@@ -1,20 +1,13 @@
-import type { NativeStackScreenProps } from '@react-navigation/native-stack';
-import React, { useEffect } from 'react';
+import { useRouter } from 'expo-router';
+import { useEffect } from 'react';
 import { ActivityIndicator, StyleSheet, Text, View } from 'react-native';
 
-type RootStackParamList = {
-  Splash: undefined;
-  Login: undefined;
-  Signup: undefined;
-  CustomerHome: undefined;
-};
+export default function SplashScreen() {
+  const router = useRouter();
 
-type Props = NativeStackScreenProps<RootStackParamList, 'Splash'>;
-
-export default function SplashScreen({ navigation }: Props) {
   useEffect(() => {
     const timer = setTimeout(() => {
-      navigation.replace('Login');
+      router.replace('/login');
     }, 2000);
     return () => clearTimeout(timer);
   }, []);
