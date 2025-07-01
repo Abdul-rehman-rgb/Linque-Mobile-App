@@ -1,7 +1,10 @@
 // import type { NativeStackScreenProps } from '@react-navigation/native-stack';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import axios from 'axios';
 import { router } from 'expo-router';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import {
+  Alert,
   StatusBar,
   StyleSheet,
   Text,
@@ -24,18 +27,18 @@ export default function LoginScreen({ navigation }: Props) {
   const [password, setPassword] = useState('');
 
   const handleLogin = async () => {
-    // try {
-    //   const baseURL = 'http://192.168.21.95:5000';
+    try {
+      const baseURL = 'http://192.168.21.95:5000';
 
-    //   const res = await axios.post(`${baseURL}/api/auth/login`, { email, password });
+      const res = await axios.post(`${baseURL}/api/auth/login`, { email, password });
 
-    //   if (res.data.success) {
-    //     await AsyncStorage.setItem('token', res.data.token);
-    //     router.replace('/customer-home'); // Later: redirect based on role
-    //   }
-    // } catch (err: any) {
-    //   Alert.alert('Login Failed', err.response?.data?.error || 'Server Error');
-    // }
+      if (res.data.success) {
+        await AsyncStorage.setItem('token', res.data.token);
+        router.replace('/customer-home'); // Later: redirect based on role
+      }
+    } catch (err: any) {
+      Alert.alert('Login Failed', err.response?.data?.error || 'Server Error');
+    }
 
     if(email == "adnan" && password == "123"){
       router.replace("/customer-home")
@@ -43,9 +46,9 @@ export default function LoginScreen({ navigation }: Props) {
   };
 
   // redirect straight to home
-  useEffect(() => {
-    router.replace("/customer-home")
-  }, [])
+  // useEffect(() => {
+  //   router.replace("/customer-home")
+  // }, [])
   
 
   return (

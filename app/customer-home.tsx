@@ -38,7 +38,7 @@ export default function CustomerHome() {
       <View style={styles.header}>
         <View>
           <Text style={styles.greeting}>Welcome back,</Text>
-          <Text style={styles.username}>Hibbans</Text>
+          <Text style={styles.username}>HIBBAN</Text>
         </View>
         <TouchableOpacity style={styles.logoutButton} onPress={handleLogout}>
           <MaterialIcons name="logout" size={28} color="#9b59b6" />
