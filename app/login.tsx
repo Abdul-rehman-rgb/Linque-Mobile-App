@@ -58,6 +58,10 @@ export default function LoginScreen({ navigation }: Props) {
         />
       </View>
 
+      <View>
+        <Image source={require("../assets/images/penguin-bg.png")} className="w-full h-[800px] absolute z-50" />
+      </View>
+
       <View className="flex-1 bg-[#8B5CF6] rounded-tl-[40px] rounded-tr-[40px] relative">
         <View className=" px-7 pt-[50px] ">
           <View className="mb-12">
@@ -71,7 +75,7 @@ export default function LoginScreen({ navigation }: Props) {
 
           <View className="">
             <Image
-              source={require("../assets/images/pengiun-logo.png")}
+              source={require("../assets/images/linque-logo-hd.png")}
               className="w-44 h-44 absolute bottom-[100px] right-0"
             />
           </View>
