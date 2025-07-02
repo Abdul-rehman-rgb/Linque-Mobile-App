@@ -27,7 +27,7 @@ export default function SignupScreen() {
       return;
     }
     try {
-      const baseURL = "http://192.168.21.11:5000";
+      const baseURL = "http://192.168.21.95:5000";
       const res = await axios.post(`${baseURL}/api/auth/signup`, {
         name,
         username,

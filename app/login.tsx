@@ -28,7 +28,7 @@ export default function LoginScreen({ navigation }: Props) {
 
   const handleLogin = async () => {
     try {
-      const baseURL = "http://192.168.21.11:5000";
+      const baseURL = "http://192.168.21.95:5000";
 
       const res = await axios.post(`${baseURL}/api/auth/login`, {
         email,
@@ -59,10 +59,10 @@ export default function LoginScreen({ navigation }: Props) {
       </View>
 
       <View>
-        <Image source={require("../assets/images/penguin-bg.png")} className="w-full h-[800px] absolute z-50" />
+        <Image source={require("../assets/images/penguin-bg.png")} className="w-full h-[800px] absolute z-10" />
       </View>
 
-      <View className="flex-1 bg-[#8B5CF6] rounded-tl-[40px] rounded-tr-[40px] relative">
+      <View className="flex-1 bg-[#8B5CF6] rounded-tl-[40px] rounded-tr-[40px] relative ">
         <View className=" px-7 pt-[50px] ">
           <View className="mb-12">
             <Text className="text-4xl font-bold text-white mb-2 tracking-tight">
@@ -117,12 +117,12 @@ export default function LoginScreen({ navigation }: Props) {
             </View>
           </View>
 
-          <View>
+          <View className="z-50">
             <TouchableOpacity
               className="bg-white py-4 rounded-full mt-4 shadow-sm"
               onPress={handleLogin}
             >
-              <Text className="text-[#8B5CF6] text-center text-base font-semibold">
+              <Text className="text-[#8B5CF6] text-center text-base font-semibold z-50">
                 Log In
               </Text>
             </TouchableOpacity>
@@ -132,7 +132,7 @@ export default function LoginScreen({ navigation }: Props) {
             <Text className="text-white text-sm">Forgot Password?</Text>
           </View>
 
-          <View className="flex-row justify-center items-center mt-8">
+          <View className="flex-row justify-center items-center mt-8 z-50">
             <Text className="text-gray-400 text-sm">
               Don't have an account?{" "}
             </Text>
