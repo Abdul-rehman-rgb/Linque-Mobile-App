@@ -12,6 +12,6 @@
     ".expo/types/**/*.ts",
     "expo-env.d.ts",
     "nativewind-env.d.ts",
-    "app/components/HomeComponents/HomeStories.tsx"
-  ]
+    "app/components/HomeComponents/HomeStories.jsx"
+, "app/(auth)/Signup.jsx", "app/(auth)/Login.jsx", "app/components/UI/Paragraph.jsx", "app/components/UI/Label.jsx", "app/components/UI/Input.jsx", "app/components/UI/Heading.jsx", "app/components/UI/Btn.jsx", "app/(auth)/_layout.jsx", "app/index.jsx", "app/_layout.jsx", "app/customer-home.jsx", "context/UserContext.jsx"  ]
 }
