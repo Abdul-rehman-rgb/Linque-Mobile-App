@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { ScrollView, StyleSheet, Text, View } from "react-native";
 import BottomNav from "../components/BottomNav";
-import EditableInput from "../components/UI/EditableInput";
+import EditableInputPlain from "../components/UI/EditableInputPlain"; // 👈 use the plain one
 import GradientBtn from "../components/UI/GradientBtn";
 import Heading from "../components/UI/Heading";
 import LightBtn from "../components/UI/LightBtn";
@@ -16,12 +16,12 @@ const MyCard = () => {
 
   return (
     <>
-      <ScrollView contentContainerStyle={{ paddingBottom: 100 }}>
+      <ScrollView contentContainerStyle={{ paddingBottom: 50 }}>
         <View style={styles.container}>
           <Heading
             style={{
-              color: "#000",
-              fontWeight: "800",
+              color: "black",
+              fontFamily: "Poppins-Bold",
               textAlign: "center",
               marginBottom: 5,
             }}
@@ -32,7 +32,7 @@ const MyCard = () => {
 
           <View style={styles.inputGroup}>
             <Text style={styles.label}>Card Number</Text>
-            <EditableInput
+            <EditableInputPlain
               style={styles.textInput}
               placeholderTextColor="#444444"
               placeholder="Enter your CNIC"
@@ -43,7 +43,7 @@ const MyCard = () => {
           <View style={[styles.row, styles.inputGroup]}>
             <View style={{ flex: 1, marginRight: 10 }}>
               <Text style={styles.label}>Gender</Text>
-              <EditableInput
+              <EditableInputPlain
                 style={styles.textInput}
                 placeholderTextColor="#444444"
                 placeholder="Male / Female"
@@ -51,7 +51,7 @@ const MyCard = () => {
             </View>
             <View style={{ flex: 1 }}>
               <Text style={styles.label}>Age</Text>
-              <EditableInput
+              <EditableInputPlain
                 style={styles.textInput}
                 placeholderTextColor="#444444"
                 placeholder="Enter your age"
@@ -78,17 +78,17 @@ const MyCard = () => {
 
           <View style={[styles.row, styles.inputGroup]}>
             <GradientBtn
-              style={{ marginRight: 10 }}
+              style={{ marginRight: 10, width: "50%" }}
               title="Add New Card"
               onPress={handleAddCard}
             />
-            <GradientBtn title="Remove Card" onPress={handleAddCard} />
+            <GradientBtn title="Remove Card" style={{ width: "50%" }} onPress={handleAddCard} />
           </View>
 
           <Heading
             style={{
               color: "#000",
-              fontWeight: "800",
+              fontFamily: "Poppins-Bold",
               marginBottom: 5,
               textAlign: "center",
             }}
@@ -99,7 +99,7 @@ const MyCard = () => {
 
           {[1, 2, 3].map((_, index) => (
             <View key={index} style={styles.inputGroup}>
-              <EditableInput
+              <EditableInputPlain
                 style={styles.textInput}
                 placeholderTextColor="#444444"
                 placeholder="Enter your age"
@@ -134,7 +134,7 @@ const styles = StyleSheet.create({
     color: "#000000",
     fontSize: 17,
     marginBottom: 4,
-    fontWeight: "700",
+    fontFamily: "Poppins-SemiBold",
     textAlign: "center",
     textDecorationLine: "underline",
   },
@@ -143,11 +143,11 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
   },
   inputGroup: {
-    marginBottom: 10,
+    marginBottom: 5,
   },
   textInput: {
     backgroundColor: "#B1B1B1",
     borderColor: "rgba(49, 49, 49, 0.4)",
-    height: 50
+    height: 50,
   },
 });

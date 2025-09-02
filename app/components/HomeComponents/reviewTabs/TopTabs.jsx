@@ -1,17 +1,9 @@
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
+import { LinearGradient } from "expo-linear-gradient";
 import { StyleSheet, Text, View } from "react-native";
 import Restaurants from "./Restautant";
 
 const Tab = createMaterialTopTabNavigator();
-
-// Dummy screens
-function HomeScreen() {
-  return (
-    <View style={styles.screen}>
-      <Text style={styles.text}>Home Screen</Text>
-    </View>
-  );
-}
 
 function ProfileScreen() {
   return (
@@ -21,36 +13,46 @@ function ProfileScreen() {
   );
 }
 
+function Activities() {
+  return (
+    <View style={styles.screen}>
+      <Text style={styles.text}>Activities Screen</Text>
+    </View>
+  );
+}
+
+function Venues() {
+  return (
+    <View style={styles.screen}>
+      <Text style={styles.text}>Venues Screen</Text>
+    </View>
+  );
+}
+
 export default function MyTopTabs() {
   return (
     <Tab.Navigator
-      screenOptions={{
-        tabBarLabelStyle: {
-          fontSize: 10,
-          fontWeight: "700",
-          paddingVertical: 1,
-        },
-        tabBarStyle: { backgroundColor: "#fff", height: 23 },
-        tabBarIndicatorStyle: {
-          backgroundColor: "transparent",
-          height: 3,
-          borderRadius: 5,
-        },
-        tabBarActiveTintColor: "white",
-        tabBarInactiveTintColor: "#AFAFB1",
-        tabBarItemStyle: {
-          backgroundColor: "#7118DE",
-          marginHorizontal: 2,
-          marginVertical: 4,
-          borderRadius: 50,
-          paddingHorizontal: 2,
-          paddingVertical: 2,
-          minHeight: 28,
-        },
-      }}
+      screenOptions={({ route }) => ({
+        tabBarLabel: ({ focused }) => (
+          <LinearGradient
+            colors={focused ? ["#7118DE", "#BF4AF1"] : ["#B1B1B1", "#B1B1B1"]}
+            start={{ x: 0, y: 0 }}
+            end={{ x: 1, y: 0 }}
+            style={styles.tabGradient}
+          >
+            <Text style={[styles.tabText, { color: focused ? "#fff" : "#444" }]}>
+              {route.name}
+            </Text>
+          </LinearGradient>
+        ),
+        tabBarStyle: styles.tabBar,
+        tabBarIndicatorStyle: styles.tabIndicator,
+      })}
     >
       <Tab.Screen name="Restaurants" component={Restaurants} />
-      <Tab.Screen name="ProfileScreen" component={ProfileScreen} />
+      <Tab.Screen name="Live Events" component={ProfileScreen} />
+      <Tab.Screen name="Activities" component={Activities} />
+      <Tab.Screen name="Venues" component={Venues} />
     </Tab.Navigator>
   );
 }
@@ -63,7 +65,31 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
   },
   text: {
-    fontSize: 18,
+    fontSize: 11,
     fontWeight: "600",
   },
+  tabGradient: {
+    borderRadius: 50,
+    paddingHorizontal: 12,
+    paddingVertical: 6,
+    justifyContent: "center",
+    alignItems: "center",
+    minHeight: 28,
+  },
+  tabText: {
+    fontSize: 8,
+    fontFamily: "Poppins-SemiBold",
+  },
+  tabBar: {
+    backgroundColor: "#fff",
+    height: 50,
+    elevation: 0,
+    shadowOpacity: 0,
+    borderBottomWidth: 0,
+  },
+  tabIndicator: {
+    backgroundColor: "transparent",
+    height: 0,
+  },
 });
+

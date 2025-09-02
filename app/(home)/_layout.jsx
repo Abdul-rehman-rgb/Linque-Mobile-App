@@ -60,16 +60,15 @@ export default function DrawerNavigator() {
               style={{
                 width: "100%",
                 height: "100%",
-                borderBottomLeftRadius: 40,
-                borderBottomRightRadius: 40,
+                // borderBottomLeftRadius: 40,
+                // borderBottomRightRadius: 40,
               }}
               resizeMode="cover"
             />
           ),
           headerStyle: {
             height: 120,
-            backgroundColor: "transparent",
-            zIndex: 10
+            //backgroundColor: "transparent",
           },
           drawerIcon: () => (
             <TouchableOpacity onPress={() => navigation.navigate("Cart")}>
@@ -452,7 +451,7 @@ export default function DrawerNavigator() {
         name="Vouchers"
         component={Vouchers}
         options={({ navigation }) => ({
-          title: "Vouchers",
+          title: "Collections",
           headerTitleStyle: {
             color: "#fff",
             fontSize: 22,
@@ -485,7 +484,7 @@ export default function DrawerNavigator() {
         name="Calendar"
         component={CalendarPage}
         options={({ navigation }) => ({
-          title: "Collections",
+          title: "Calendar",
           headerTitleStyle: {
             color: "#fff",
             fontSize: 22,

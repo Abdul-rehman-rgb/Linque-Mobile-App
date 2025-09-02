@@ -37,11 +37,11 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingHorizontal: 20,
-    marginVertical: 50
+    marginVertical: 50,
   },
   heading: {
     color: "#000",
-    fontWeight: "800",
+    fontFamily: "Poppins-Bold",
     textAlign: "center",
     marginBottom: 10,
   },

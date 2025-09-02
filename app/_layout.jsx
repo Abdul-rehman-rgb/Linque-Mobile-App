@@ -22,7 +22,7 @@ export default function RootLayout() {
 
   return (
     <UserContextProvider>
-      <GestureHandlerRootView style={{ flex: 1}}>
+      <GestureHandlerRootView style={{ flex: 1, backgroundColor: "#fff"}}>
         <SafeAreaProvider>
           {/* <ThemeProvider value={colorScheme === 'light' ? DarkTheme : DefaultTheme}> */}
             <Stack screenOptions={{ headerShown: false }}>

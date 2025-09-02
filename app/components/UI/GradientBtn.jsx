@@ -27,14 +27,14 @@ const styles = StyleSheet.create({
   gradient: {
     paddingVertical: 12,
     paddingHorizontal: 16,
-    borderRadius: 20,
+    borderRadius: 25,
     alignItems: 'center',
     justifyContent: 'center',
   },
   text: {
     color: 'white',
     fontSize: 16,
-    fontWeight: '700',
+    fontFamily: "Poppins-SemiBold",
     textAlign: 'center',
   },
 });

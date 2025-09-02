@@ -27,7 +27,7 @@ const PrivacyPolicy = () => {
               }}
             >
               <ScrollView
-                showsVerticalScrollIndicator={true} // shows scrollbar
+                showsVerticalScrollIndicator={true}
               >
                 <Paragraph style={styles.paragraph}>
                   Welcome to www.lorem-ipsum.info. This site is provided as a
@@ -36,7 +36,7 @@ const PrivacyPolicy = () => {
                   obligations, please read them carefully.
                 </Paragraph>
                 <Text>{"\n"}</Text> {/* Line break */}
-                <Text style={{ fontSize: 17, fontWeight: "600" }}>
+                <Text style={{ fontSize: 17, fontFamily: "Poppins-SemiBold" }}>
                   YOUR AGREEMENT
                 </Text>
                 <Paragraph style={styles.paragraph}>
@@ -70,8 +70,8 @@ const PrivacyPolicy = () => {
               gap: 10,
             }}
           >
-            <Text style={{ marginTop: 10 }}>For more details, visit:</Text>
-            <Text style={{ color: "#6A14DC", fontSize: 18, fontWeight: "600" }}>
+            <Text style={{ marginTop: 10, fontFamily: "Poppins-SemiBold" }}>For more details, visit:</Text>
+            <Text style={{ color: "#6A14DC", fontSize: 18, fontFamily: "Poppins-SemiBold" }}>
               https://Linque.com/datapolicy
             </Text>
             <View
@@ -87,7 +87,7 @@ const PrivacyPolicy = () => {
               }}
             >
               <Heading
-                style={{ fontSize: 11, color: "#000000", fontWeight: "600" }}
+                style={{ fontSize: 11, color: "#000000", fontFamily: "Poppins-SemiBold" }}
               >
                 Last Updated: 4 October, 2025
               </Heading>
@@ -111,9 +111,10 @@ const styles = StyleSheet.create({
   paragraph: {
     color: "#000000",
     fontSize: 12,
-    fontWeight: "500",
+    fontFamily: "Poppins-Medium"
   },
   scrollContent: {
     marginBottom: 80,
+    marginTop: 50
   },
 });

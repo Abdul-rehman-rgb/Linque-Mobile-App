@@ -10,6 +10,12 @@ import {
 import BottomNav from "../components/BottomNav";
 import Heading from "../components/UI/Heading";
 
+const ShareIcon = ({ source, alt }) => (
+  <TouchableOpacity accessible accessibilityLabel={alt}>
+    <Image source={source} style={styles.icon} resizeMode="contain" />
+  </TouchableOpacity>
+);
+
 const InviteFriend = () => {
   return (
     <>
@@ -18,14 +24,6 @@ const InviteFriend = () => {
           <Heading style={styles.heading} level={3}>
             Scan / Share QR Code Invite
           </Heading>
-
-          {/* <View style={styles.noteBox}>
-          <Paragraph style={styles.para}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-            dignissim dolor quis varius faucibus. Lorem ipsum dolor sit amet,
-            consectetur adipiscing elit. Sed dignissim dolor quis.
-          </Paragraph>
-        </View> */}
 
           <View style={styles.qrContainer}>
             <Image
@@ -47,7 +45,6 @@ const InviteFriend = () => {
             borderTopColor: "#E6E6E6",
             borderTopWidth: 0.5,
             paddingHorizontal: 20,
-            alignContent: "center",
             alignItems: "center",
           }}
         >
@@ -55,9 +52,12 @@ const InviteFriend = () => {
             Send Invite Link
           </Heading>
 
-          <Text style={styles.link}>https://Linque.com/invite</Text>
+          <TouchableOpacity>
+            <Text style={styles.link}>https://Linque.com/invite</Text>
+          </TouchableOpacity>
           <Text style={styles.subHeading}>Add Invite Note:</Text>
         </View>
+
         <LinearGradient
           colors={["#7118DE", "#BF4AF1"]}
           start={{ x: 0, y: 0 }}
@@ -66,30 +66,22 @@ const InviteFriend = () => {
         >
           <Text style={styles.gradientTitle}>Share to:</Text>
           <View style={styles.iconRow}>
-            <TouchableOpacity>
-              <Image
-                source={require("../../assets/images/icons/facebook.png")}
-                style={styles.icon}
-              />
-            </TouchableOpacity>
-            <TouchableOpacity>
-              <Image
-                source={require("../../assets/images/icons/insta.png")}
-                style={styles.icon}
-              />
-            </TouchableOpacity>
-            <TouchableOpacity>
-              <Image
-                source={require("../../assets/images/icons/snapchat.png")}
-                style={styles.icon}
-              />
-            </TouchableOpacity>
-            <TouchableOpacity>
-              <Image
-                source={require("../../assets/images/icons/whatsap.png")}
-                style={styles.icon}
-              />
-            </TouchableOpacity>
+            <ShareIcon
+              source={require("../../assets/images/icons/facebook.png")}
+              alt="Share to Facebook"
+            />
+            <ShareIcon
+              source={require("../../assets/images/icons/insta.png")}
+              alt="Share to Instagram"
+            />
+            <ShareIcon
+              source={require("../../assets/images/icons/snapchat.png")}
+              alt="Share to Snapchat"
+            />
+            <ShareIcon
+              source={require("../../assets/images/icons/whatsap.png")}
+              alt="Share to WhatsApp"
+            />
           </View>
         </LinearGradient>
       </ScrollView>
@@ -106,65 +98,54 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
   },
   scrollContent: {
-    // paddingBottom: 60,
-    // paddingTop: 10,
-    // paddingHorizontal: 12,
     marginBottom: 60,
+    marginTop: 60,
   },
   heading: {
     color: "#000",
-    fontWeight: "800",
+    fontFamily: "Poppins-Bold",
     textAlign: "center",
-    marginBottom: 10,
   },
-
   subHeading: {
-    fontWeight: "semibold",
+    fontWeight: "600", // fixed invalid semibold
     fontSize: 17,
     marginTop: 10,
     marginBottom: 5,
     color: "#000",
   },
-
   para: {
     color: "#000000",
     fontSize: 12,
   },
-
   noteBox: {
     backgroundColor: "rgba(210, 213, 219, 0.25)",
     padding: 12,
     borderRadius: 10,
     marginBottom: 20,
   },
-
   qrContainer: {
     alignItems: "center",
     justifyContent: "center",
     marginVertical: 20,
   },
-
   qrImage: {
     width: 200,
     height: 200,
     marginBottom: 10,
     flex: 1,
   },
-
   qrIcon: {
     width: 40,
     height: 40,
     marginBottom: 10,
   },
-
   shareText: {
-    fontWeight: "600",
+    fontFamily: "Poppins-SemiBold",
     color: "#000",
   },
-
   link: {
     color: "#6A14DC",
-    fontWeight: "semibold",
+    fontWeight: "600", // fixed invalid semibold
     fontSize: 18,
     marginBottom: 10,
   },
@@ -183,6 +164,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     flex: 1,
+    gap: 5,
   },
   icon: {
     width: 40,

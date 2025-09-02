@@ -26,7 +26,7 @@ const Heading = ({ children, level = 1, style }) => {
 
 const styles = StyleSheet.create({
   base: {
-    fontWeight: "300",
+    fontFamily: "poppins-semibold",
     color: "white",
   },
 });

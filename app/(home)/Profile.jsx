@@ -176,19 +176,19 @@ const styles = StyleSheet.create({
     padding: 20
   },
   inputGroup: {
-    marginBottom: 16
+    marginBottom: 5
   },
   label: {
     color: "#000",
     fontSize: 17,
     marginBottom: 4,
-    fontWeight: "600"
+    fontFamily: "poppins-semibold"
   },
   saveButtonContainer: {
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    marginTop: 20
+    marginTop: 5,
   },
   loader: {
     flex: 1,

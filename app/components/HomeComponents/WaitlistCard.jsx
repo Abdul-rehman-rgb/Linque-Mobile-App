@@ -54,7 +54,7 @@ const WaitlistCard = ({ label, startDate, onBookPress, item }) => {
 const styles = StyleSheet.create({
   imageBackground: {
     width: "100%",
-    height: 200,
+    height: 150,
     justifyContent: "space-between",
     marginRight: 15,
     marginBottom: 10,
@@ -102,25 +102,27 @@ const styles = StyleSheet.create({
     alignItems: "flex-end",
   },
   eventTitle: {
-    fontSize: 16,
-    fontWeight: "600",
+    fontSize: 18,
+    fontFamily: "Poppins-SemiBold",
     color: "#fff",
-    fontFamily: "poppins-semibold"
   },
   eventDate: {
     fontSize: 13,
     color: "#fff",
     marginTop: 4,
-    fontFamily: "poppins-medium"
+    fontFamily: "Poppins-Medium"
   },
   eventType: {
     fontSize: 12,
     color: "#ccc",
+    fontFamily: "Poppins-Medium"
   },
   bookBtn: {
     paddingVertical: 6,
     paddingHorizontal: 5,
     width: 130,
+    fontFamily: "Poppins-SemiBold"
+
   },
 });
 

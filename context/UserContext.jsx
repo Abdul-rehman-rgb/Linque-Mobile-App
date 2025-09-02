@@ -71,26 +71,39 @@ export const UserContextProvider = ({ children }) => {
     }
   };
 
-  const bookReservation = async (reservationData) => {
-    try {
-      setLoading(true);
-      const token = await AsyncStorage.getItem("auth_token");
-      const response = await axios.post(
-        `${API_BASE}/api/reservation/reservations`,
-        reservationData,
-        {
-          headers: { Authorization: `Bearer ${token}` },
-        }
-      );
+const bookReservation = async (reservationData) => {
+  try {
+    setLoading(true);
+    const token = await AsyncStorage.getItem("auth_token");
 
-      return response.data;
-    } catch (error) {
-      console.error("Book reservation error:", error.response?.data || error.message);
-      throw error;
-    } finally {
-      setLoading(false);
-    }
-  };
+    const response = await axios.post(
+      `${API_BASE}/api/reservation/reservations`,
+      reservationData,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+      }
+    );
+
+    // return the backend response (should include { success, message, reservation })
+    return response.data;
+  } catch (error) {
+    console.error(
+      "Book reservation error:",
+      error.response?.data || error.message
+    );
+    return {
+      success: false,
+      message:
+        error.response?.data?.message ||
+        "Failed to book reservation. Please try again.",
+    };
+  } finally {
+    setLoading(false);
+  }
+};
 
   const updateUser = async (updates) => {
     try {

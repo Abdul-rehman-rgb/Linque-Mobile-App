@@ -70,13 +70,14 @@ export default LiveChat;
 const styles = StyleSheet.create({
   heading: {
     color: "#000",
-    fontWeight: "800",
+    fontFamily: "Poppins-Bold",
     textAlign: "center",
     marginBottom: 10,
+    marginTop: 10
   },
   gradient: {
     padding: 12,
-    borderRadius: 12,
+    borderRadius: 15,
   },
   chatRow: {
     flexDirection: "row",
@@ -89,17 +90,19 @@ const styles = StyleSheet.create({
   },
   chatContent: {
     flex: 1,
+    minHeight: 450
   },
   agentName: {
-    fontWeight: "700",
+    fontFamily: "Poppins-Medium",
     color: "#fff",
     marginBottom: 4,
+    fontSize: 13
   },
   message: {
     color: "#6A14DC",
     marginBottom: 6,
     fontSize: 11,
-    fontWeight: '600'
+    fontFamily: "Poppins-SemiBold"
   },
   footerRow: {
     flexDirection: "row",

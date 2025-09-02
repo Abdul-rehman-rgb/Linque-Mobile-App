@@ -1,4 +1,5 @@
 import { Feather } from "@expo/vector-icons";
+import { LinearGradient } from 'expo-linear-gradient';
 import { StyleSheet, TextInput, View } from "react-native";
 
 const EditableInput = ({
@@ -12,16 +13,23 @@ const EditableInput = ({
 }) => {
   return (
     <View style={[styles.inputContainer, style]}>
-      <TextInput
-        style={styles.textInput}
-        value={value}
-        onChangeText={onChangeText}
-        placeholder={placeholder}
-        placeholderTextColor={placeholderTextColor}
-        keyboardType={keyboardType}
-        secureTextEntry={secureTextEntry}
-      />
-      <Feather name="edit-2" size={18} color="#fff" style={styles.icon} />
+      <LinearGradient
+        colors={['#7118DE', '#BF4AF1']}
+        start={{ x: 0, y: 0 }}
+        end={{ x: 1, y: 0 }}
+        style={styles.gradient}
+      >
+        <TextInput
+          style={styles.textInput}
+          value={value}
+          onChangeText={onChangeText}
+          placeholder={placeholder}
+          placeholderTextColor={placeholderTextColor}
+          keyboardType={keyboardType}
+          secureTextEntry={secureTextEntry}
+        />
+        <Feather name="edit-2" size={18} color="#fff" style={styles.icon} />
+      </LinearGradient>
     </View>
   );
 };
@@ -30,23 +38,21 @@ export default EditableInput;
 
 const styles = StyleSheet.create({
   inputContainer: {
+    borderRadius: 25,
+    overflow: "hidden",
+  },
+  gradient: {
     flexDirection: "row",
     alignItems: "center",
-    borderWidth: 1,
-    borderColor: "#7118DE",
-    borderRadius: 9999,
-    paddingHorizontal: 10,
-    paddingVertical: 8,
-    backgroundColor: "#7118DE",
-    padding: 16,
-    color: "#fff",
-    fontSize: 16,
-    fontWeight: "400",
+    paddingVertical: 4,
+    paddingHorizontal: 16,
+    borderRadius: 20,
   },
   textInput: {
     flex: 1,
     fontSize: 16,
     color: "#fff",
+    paddingVertical: 0,
   },
   icon: {
     marginLeft: 8,

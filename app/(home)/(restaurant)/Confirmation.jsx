@@ -23,6 +23,7 @@ const Confirmation = () => {
   const router = useRouter();
   const { id: restaurantId } = useLocalSearchParams();
 
+
   const { bookReservation } = useUserData();
 
   const [selectedDate, setSelectedDate] = useState(new Date(2025, 1, 13));
@@ -42,20 +43,29 @@ const Confirmation = () => {
     }
   };
 
-  const formattedDate = selectedDate.toLocaleDateString("en-CA");
+  const convertTo24Hour = (time12h) => {
+    const [time, modifier] = time12h.split(" ");
+    let [hours, minutes] = time.split(":");
+    hours = parseInt(hours, 10);
+    if (modifier === "PM" && hours < 12) hours += 12;
+    if (modifier === "AM" && hours === 12) hours = 0;
+    return `${hours.toString().padStart(2, "0")}:${minutes}`;
+  };
 
   const handleBooking = async () => {
     try {
       setLoading(true);
-
+      const formattedDate = selectedDate.toISOString().split("T")[0];
+      const formattedTime = convertTo24Hour(selectedTime);
       const res = await bookReservation({
         restaurantId,
         reservationDate: formattedDate,
-        reservationTime: selectedTime,
+        reservationTime: formattedTime,
         numberOfPersons: seats,
         notes: note,
         promoCode: promo,
       });
+
 
       if (res.success) {
         Alert.alert("✅ Success", "Your reservation has been booked!");
@@ -83,9 +93,10 @@ const Confirmation = () => {
         contentContainerStyle={styles.scrollContent}
         showsVerticalScrollIndicator={false}
       >
+
         <MyCalendar />
 
-        {/* Date Picker */}
+
         <View style={styles.datePickerWrapper}>
           <Text style={styles.selectedDateText}>
             {selectedDate.toDateString()}
@@ -110,7 +121,9 @@ const Confirmation = () => {
           )}
         </View>
 
-        {/* Time Selection */}
+
+
+
         <View style={styles.section}>
           <Text style={styles.sectionLabel}>🕐 Time</Text>
           <View style={styles.selectionBox}>
@@ -136,7 +149,7 @@ const Confirmation = () => {
           </View>
         </View>
 
-        {/* Seats Selection */}
+
         <View style={styles.section}>
           <Text style={styles.sectionLabel}>👥 Seats</Text>
           <View style={styles.selectionBox}>
@@ -158,7 +171,7 @@ const Confirmation = () => {
           </View>
         </View>
 
-        {/* Promo Code */}
+
         <View style={styles.inputWrapper}>
           <Text style={styles.sectionLabel}>Promo Code</Text>
           <TextInput
@@ -170,7 +183,7 @@ const Confirmation = () => {
           />
         </View>
 
-        {/* Note */}
+
         <View style={styles.inputWrapper}>
           <Text style={styles.inputLabel}>Note for Restaurant:</Text>
           <TextInput
@@ -182,7 +195,7 @@ const Confirmation = () => {
           />
         </View>
 
-        {/* Button */}
+
         <View style={styles.buttonWrapper}>
           <GradientBtn
             title={loading ? "Booking..." : "Check Availability"}
@@ -192,6 +205,7 @@ const Confirmation = () => {
         </View>
       </ScrollView>
 
+      
       <BottumNav />
     </SafeAreaView>
   );

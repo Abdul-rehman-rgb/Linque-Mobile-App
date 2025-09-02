@@ -12,8 +12,8 @@ const CalendarPage = () => {
       <View style={styles.container}>
         <MyCalendar />
         <View style={styles.buttonRow}>
-          <GradientBtn style={styles.button} title="Add New Card" />
-          <GradientBtn title="Remove Card" />
+          <GradientBtn style={styles.button} textStyle={{fontSize: 14}}  title="Booking History" />
+          <GradientBtn style={{width: "50%"}} textStyle={{fontSize: 14}} title="Upcoming Bookings" />
         </View>
       </View>
       <View style={styles.container}>
@@ -40,11 +40,12 @@ const styles = StyleSheet.create({
   },
   button: {
     marginRight: 10,
+    width: "50%",
   },
   heading: {
     color: "#000",
     fontSize: 18,
-    fontWeight: "700",
+    fontFamily: "Poppins-Bold",
     textDecorationLine: "underline",
     textAlign: "center",
     marginBottom: 16,

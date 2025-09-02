@@ -73,6 +73,7 @@ const HelpCentre = () => {
           alignContent: "center",
           alignItems: "center",
           gap: 2,
+          backgroundColor: "#fff"
         }}
       >
         <View style={{marginVertical: 10}}>
@@ -91,14 +92,14 @@ const HelpCentre = () => {
               router.push("/HelpCentre/LiveChat");
             }}
           >
-            <Text style={{ fontSize: 16, fontWeight: "600", color: "white" }}>
+            <Text style={{ fontSize: 16, fontFamily: "Poppins-SemiBold", color: "white" }}>
               Live Chat Support
             </Text>
           </TouchableOpacity>
           <Text
             style={{
               fontSize: 12,
-              fontWeight: "medium",
+              fontFamily: "Poppins-Medium",
               color: "#000000",
               textDecorationLine: "underline",
             }}
@@ -110,7 +111,7 @@ const HelpCentre = () => {
               router.push("/HelpCentre/BusinesCenter");
             }} />
         <Text
-          style={{ fontSize: 14, fontWeight: "medium", textAlign: "center" }}
+          style={{ fontSize: 14, fontFamily: "Poppins-Medium", textAlign: "center" }}
         >
           Want your business on Linque? Visit our Business Centre for queries.
         </Text>
@@ -130,8 +131,8 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
   },
   sectionTitle: {
-    fontWeight: "bold",
-    fontSize: 16,
+    fontFamily: "Poppins-Bold",
+    fontSize: 20,
     textAlign: "center",
     marginVertical: 20,
     color: "#000",
@@ -148,7 +149,7 @@ const styles = StyleSheet.create({
   },
   question: {
     fontSize: 17,
-    fontWeight: "600",
+    fontFamily: "Poppins-SemiBold",
     color: "#000000",
   },
   arrow: {

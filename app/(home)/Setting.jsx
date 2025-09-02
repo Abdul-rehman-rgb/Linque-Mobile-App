@@ -2,13 +2,13 @@ import { LinearGradient } from "expo-linear-gradient";
 import { router } from "expo-router";
 import { useState } from "react";
 import {
-    Image,
-    ScrollView,
-    StyleSheet,
-    Switch,
-    Text,
-    TouchableOpacity,
-    View,
+  Image,
+  ScrollView,
+  StyleSheet,
+  Switch,
+  Text,
+  TouchableOpacity,
+  View,
 } from "react-native";
 import BottomNav from "../components/BottomNav";
 
@@ -22,7 +22,6 @@ export default function SettingsScreen() {
     router.replace("(auth)");
   };
 
-  // Theme colors based on darkMode state
   const themeStyles = {
     backgroundColor: darkMode ? "#121212" : "#fff",
     textColor: darkMode ? "#fff" : "#000",
@@ -99,7 +98,8 @@ export default function SettingsScreen() {
 
         {/* Community Note */}
         <Text style={[styles.noteTitle, { color: themeStyles.textColor }]}>
-          <Text style={{ fontWeight: "400" }}>Linque</Text> Community Note:
+          <Text style={{ fontFamily: "Poppins-Light" }}>Linque</Text> Community
+          Note:
         </Text>
         <View style={[styles.noteBox, { backgroundColor: themeStyles.noteBg }]}>
           <ScrollView style={{ maxHeight: 100 }}>
@@ -132,13 +132,14 @@ const styles = StyleSheet.create({
     borderBottomColor: "#eee",
   },
   label: {
-    fontSize: 16,
-    fontWeight: "600",
+    fontSize: 18,
+    fontFamily: "Poppins-SemiBold",
   },
   version: {
     textAlign: "center",
     marginTop: 20,
     fontSize: 12,
+    fontFamily: "Poppins-SemiBold",
   },
   loginButton: {
     marginTop: 20,
@@ -160,19 +161,19 @@ const styles = StyleSheet.create({
   },
   noteTitle: {
     marginTop: 20,
-    fontWeight: "600",
+    fontFamily: "Poppins-SemiBold",
     fontSize: 17,
     color: "#000000",
     textAlign: "center",
   },
   noteBox: {
     borderRadius: 10,
-    padding: 10,
+    padding: 20,
     marginTop: 10,
   },
   noteText: {
     fontSize: 12,
-    fontWeight: "medium",
+    fontFamily: "Poppins-Medium",
     color: "#000000",
   },
 });
