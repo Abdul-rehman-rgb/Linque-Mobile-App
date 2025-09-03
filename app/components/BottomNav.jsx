@@ -10,7 +10,7 @@ const BottomNav = () => {
   }
   return (
     <View style={styles.bottomNav}>
-        <View style={styles.bottomLeft}>
+        <TouchableOpacity onPress={() => router.push('/(home)/home')} style={styles.bottomLeft}>
           <Image
             source={require("@/assets/images/pengiun-logo.png")}
             style={styles.bottomLogo}
@@ -19,7 +19,7 @@ const BottomNav = () => {
             <Text style={styles.bottomTitle}>LINQUE</Text>
             <Text style={styles.bottomSubtitle}>Elevate Your Outings</Text>
           </View>
-        </View>
+        </TouchableOpacity>
 
         <TouchableOpacity style={styles.bottomButton} onPress={HandlePress}>
           <FontAwesome5 name="headset" size={24} color="#fff" />
@@ -65,13 +65,16 @@ const styles = StyleSheet.create({
         color: "white",
         fontWeight: "800",
         fontSize: 20,
-        lineHeight: 24,
+        lineHeight: 34,
+        fontFamily: "GoodTimes",
+        letterSpacing: 10
       },
       bottomSubtitle: {
         color: "white",
-        fontSize: 12,
+        fontSize: 10,
         opacity: 0.7,
         marginTop: -4,
+        fontFamily: "GoodTimes",
       },
       bottomButton: {
         alignItems: "center",

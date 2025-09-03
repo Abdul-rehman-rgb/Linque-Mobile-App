@@ -5,7 +5,7 @@ import {
   DrawerItemList,
 } from "@react-navigation/drawer";
 import { router } from "expo-router";
-import { Image, ImageBackground, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { Image, ImageBackground, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
 import Heading from "../components/UI/Heading";
 
 
@@ -45,14 +45,13 @@ const username = user?.username || user?.name || "User";
             <Text style={styles.locationText}>Karachi</Text>
           </View>
 
-          {/* Account Score Row */}
-          <View style={styles.accountScoreRow}>
-            <View style={styles.scoreBox}>
-              <Text style={styles.scoreText}>Account Score:</Text>
-            </View>
-            <View style={styles.scoreValueBox}>
-              <Text style={styles.scoreValueText}>0548</Text>
-            </View>
+          {/* Search Box */}
+          <View style={styles.searchContainer}>
+            <TextInput
+              style={styles.searchInput}
+              placeholder="Search..."
+              placeholderTextColor="#ccc"
+            />
           </View>
         </View>
 
@@ -123,37 +122,17 @@ const styles = StyleSheet.create({
     textDecorationLine: "underline",
     fontFamily: "poppins-medium"
   },
-  accountScoreRow: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    width: "100%",
+  searchContainer: {
     marginBottom: 10,
   },
-  scoreBox: {
+  searchInput: {
     backgroundColor: "white",
-    padding: 5,
-    borderRadius: 16,
-    width: 156,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  scoreText: {
+    borderRadius: 30,
+    paddingHorizontal: 15,
+    paddingVertical: 10,
     fontSize: 16,
-    color: "#6A14DC",
-    fontFamily: "poppins-SemiBold",
-  },
-  scoreValueBox: {
-    backgroundColor: "#134C46",
-    padding: 5,
-    borderRadius: 16,
-    width: 71,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  scoreValueText: {
-    fontSize: 16,
-    color: "#fff",
-    fontFamily: "poppins-bold"
+    color: '#6A14DC',
+    fontFamily: "poppins-medium",
   },
   loginButton: {
   flexDirection: 'row',

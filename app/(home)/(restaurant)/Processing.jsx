@@ -1,13 +1,13 @@
 import { useRouter } from "expo-router";
 import {
-    ActivityIndicator,
-    Image,
-    ImageBackground,
-    SafeAreaView,
-    ScrollView,
-    StyleSheet,
-    Text,
-    View,
+  ActivityIndicator,
+  Image,
+  ImageBackground,
+  SafeAreaView,
+  ScrollView,
+  StyleSheet,
+  Text,
+  View,
 } from "react-native";
 import BottumNav from "../../components/BottomNav";
 import GradientBtn from "../../components/UI/GradientBtn";
@@ -23,7 +23,7 @@ const Processing = () => {
       <Header
         title="Restaurant 1"
         onBack={goBack}
-        backgroundImage={require("../../../assets/images/purpleBg.png")}
+        backgroundImage={require("../../../assets/images/1.png")}
       />
 
       <ScrollView

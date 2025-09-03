@@ -156,7 +156,8 @@ export default function Profile() {
 
         <View style={styles.saveButtonContainer}>
           <LightBtn 
-            title="Save Changes" 
+          style={{width: 200}}
+            title="OK" 
             onPress={handleSave}
             disabled={loading}
           />

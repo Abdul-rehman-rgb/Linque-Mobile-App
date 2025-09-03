@@ -21,6 +21,6 @@ const styles = StyleSheet.create({
   buttonText: {
     color: 'black',
     fontSize: 17,
-    fontWeight: 'bold',
+    fontFamily: "Poppins-Bold"
   },
 });

@@ -44,7 +44,7 @@ const styles = StyleSheet.create({
   gradient: {
     flexDirection: "row",
     alignItems: "center",
-    paddingVertical: 4,
+    paddingVertical: 10,
     paddingHorizontal: 16,
     borderRadius: 20,
   },

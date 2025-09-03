@@ -42,6 +42,12 @@ const dealsData = [
     code: "HBL",
     description: "Platinum, Gold & Ladies Cards",
   },
+  {
+    title: "Bank Discounts",
+    discount: "40%",
+    code: "HBL",
+    description: "Platinum, Gold & Ladies Cards",
+  },
 ];
 
 const InfoButton = ({ icon, label }) => (
@@ -91,11 +97,13 @@ const DealCard = ({ title, discount, code, description }) => (
 const RestaurantDetail = () => {
   const [isModalVisible, setModalVisible] = useState(false);
   const [isModalVisible2, setModalVisible2] = useState(false);
+  const [isMenuModalVisible, setMenuModalVisible] = useState(false);
   const router = useRouter();
   const params = useLocalSearchParams();
 
   const toggleModal = () => setModalVisible(!isModalVisible);
   const toggleModal2 = () => setModalVisible2(!isModalVisible2);
+  const toggleMenuModal = () => setMenuModalVisible(!isMenuModalVisible);
   const goBack = () => router.back();
 
   return (
@@ -103,7 +111,7 @@ const RestaurantDetail = () => {
       <Header
         title="Restaurant Details"
         onBack={goBack}
-        backgroundImage={require("../../../assets/images/purpleBg.png")}
+        backgroundImage={require("../../../assets/images/1.png")}
       />
 
       <ScrollView
@@ -116,7 +124,35 @@ const RestaurantDetail = () => {
             source={require("../../../assets/images/food.png")}
             style={styles.restaurantImage}
           />
+          
         </View>
+        <View style={{flexDirection: 'row', justifyContent: 'space-between', boxShadow: 'none', marginBottom: 5}}>
+            <Image
+            source={require("../../../assets/images/food1.png")}
+            style={styles.restaurantImage1}
+          />
+          
+          <Image
+            source={require("../../../assets/images/food1.png")}
+            style={styles.restaurantImage1}
+          />
+          <Image
+            source={require("../../../assets/images/food1.png")}
+            style={styles.restaurantImage1}
+          />
+          <Image
+            source={require("../../../assets/images/food1.png")}
+            style={styles.restaurantImage1}
+          />
+          <Image
+            source={require("../../../assets/images/food1.png")}
+            style={styles.restaurantImage1}
+          />
+          <Image
+            source={require("../../../assets/images/food1.png")}
+            style={styles.restaurantImage1}
+          />
+          </View>
 
         {/* Restaurant Info Section */}
         <View style={styles.sectionContainer}>
@@ -228,6 +264,41 @@ const RestaurantDetail = () => {
               </View>
             </Modal>
 
+            {/* Menu Modal */}
+            <Modal
+              visible={isMenuModalVisible}
+              animationType="slide"
+              transparent={true}
+              onRequestClose={toggleMenuModal}
+            >
+              <View style={styles.modalOverlay}>
+                <TouchableOpacity
+                  style={styles.modalCloseButton}
+                  onPress={toggleMenuModal}
+                >
+                  <Image
+                    source={require("../../../assets/images/icons/close.png")}
+                    style={styles.modalCloseIcon}
+                  />
+                </TouchableOpacity>
+                <View style={styles.menuModalContainer}>
+                  <Heading style={styles.modalTitle} level={3}>
+                    Restaurant Menu
+                  </Heading>
+                  <Image
+                    source={require("../../../assets/images/menu.png")}
+                    style={styles.fullMenuImage}
+                  />
+                  <TouchableOpacity
+                    style={styles.closeButton}
+                    onPress={toggleMenuModal}
+                  >
+                    <Text style={styles.closeButtonText}>Close</Text>
+                  </TouchableOpacity>
+                </View>
+              </View>
+            </Modal>
+
             {/* Hours Card */}
             <View style={styles.infoCard}>
               <View style={styles.cardHeader}>
@@ -244,13 +315,14 @@ const RestaurantDetail = () => {
           </View>
 
           {/* Menu Card */}
-          <View
+          <TouchableOpacity
             style={{
               flex: 1,
               backgroundColor: "rgba(210, 213, 219, 0.49)",
               padding: 10,
               borderRadius: 10,
             }}
+            onPress={toggleMenuModal}
           >
             <View style={styles.cardHeader}>
               <Image
@@ -263,7 +335,7 @@ const RestaurantDetail = () => {
               source={require("../../../assets/images/menu.png")}
               style={styles.menuImage}
             />
-          </View>
+          </TouchableOpacity>
         </View>
 
         {/* Reservation Button */}
@@ -308,6 +380,10 @@ const styles = StyleSheet.create({
     width: "100%",
     height: 180,
     borderRadius: 12,
+  },
+   restaurantImage1: {
+    width: 53,
+    height: 53,
   },
 
   // Info Section
@@ -567,6 +643,21 @@ const styles = StyleSheet.create({
     width: 24,
     height: 24,
     tintColor: "#FFFFFF",
+  },
+  menuModalContainer: {
+    backgroundColor: "#FFFFFF",
+    borderRadius: 16,
+    padding: 24,
+    width: "90%",
+    maxWidth: 400,
+    maxHeight: "80%",
+  },
+  fullMenuImage: {
+    width: "100%",
+    height: 400,
+    borderRadius: 8,
+    marginVertical: 20,
+    resizeMode: "contain",
   },
 });
 

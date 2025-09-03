@@ -68,7 +68,7 @@ const MyCard = () => {
             />
           </View>
 
-          <View style={[styles.inputGroup, { flexDirection: "row" }]}>
+          <View style={[styles.inputGroup, { flexDirection: "row", marginBottom: 10 }]}>
             <LightBtn
               title="Done"
               style={{ flex: 1 }}
@@ -78,7 +78,7 @@ const MyCard = () => {
 
           <View style={[styles.row, styles.inputGroup]}>
             <GradientBtn
-              style={{ marginRight: 10, width: "50%" }}
+              style={{ marginRight: 0, width: "50%", }}
               title="Add New Card"
               onPress={handleAddCard}
             />
@@ -143,7 +143,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
   },
   inputGroup: {
-    marginBottom: 5,
+    marginBottom: 5
   },
   textInput: {
     backgroundColor: "#B1B1B1",

@@ -54,7 +54,7 @@ const HelpCentre = () => {
 
   return (
     <>
-    <ScrollView contentContainerStyle={{paddingVertical: 16, marginBottom: 70}}>
+    <ScrollView contentContainerStyle={{paddingVertical: 16, marginBottom: 70, backgroundColor: "white"}}>
       <View style={styles.container}>
       {/* Title */}
       <Text style={styles.sectionTitle}>How may we assist you?</Text>

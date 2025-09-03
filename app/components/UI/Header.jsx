@@ -1,11 +1,11 @@
 // components/Header.js
 import { ArrowLeft } from "lucide-react-native";
 import {
-    ImageBackground,
-    StyleSheet,
-    Text,
-    TouchableOpacity,
-    View,
+  ImageBackground,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
 } from "react-native";
 
 const Header = ({ title, onBack, backgroundImage }) => {
@@ -34,6 +34,7 @@ export default Header;
 const styles = StyleSheet.create({
   bg: {
     width: "100%",
+    height: 120,
     paddingBottom: 24,
     paddingTop: 48,
     borderBottomLeftRadius: 50,

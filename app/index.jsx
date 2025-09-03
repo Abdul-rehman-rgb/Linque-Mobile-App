@@ -62,10 +62,12 @@ const styles = StyleSheet.create({
     fontSize: 46,
     fontWeight: "regular",
     color: "#FFFFFF",
+    fontFamily: "GoodTimes",
   },
   tagLine: {
     fontSize: 16,
     letterSpacing: 5,
     color: "white",
+    fontFamily: "GoodTimes",
   },
 });

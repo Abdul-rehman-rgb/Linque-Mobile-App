@@ -1,152 +1,170 @@
+import { FontAwesome } from "@expo/vector-icons";
 import {
+  FlatList,
   Image,
   ScrollView,
   StyleSheet,
   Text,
-  TouchableOpacity,
-  View
+  View,
 } from "react-native";
-import BottomNav from '../../BottomNav';
+import BottomNav from "../../BottomNav";
+
 const data = [
   {
-    id: 1,
+    id: "1",
     title: "Aylanto",
-    date: "13/01/25",
-    bgColor: "#1e1e1e", // black
+    rating: 3,
+    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit...",
     image: require("../../../../assets/images/rest.png"),
+    disacount: "30%",
   },
   {
-    id: 2,
+    id: "2",
     title: "Sakura",
-    date: "17/01/25",
-    bgColor: "#094e46", // green
+    rating: 5,
+    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit...",
     image: require("../../../../assets/images/rest.png"),
+    disacount: "30%",
   },
   {
-    id: 3,
-    title: "Pogganwala Hut",
-    date: "25/01/25",
-    bgColor: "#b100b3", // purple
+    id: "3",
+    title: "CocoChan",
+    rating: 4,
+    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit...",
     image: require("../../../../assets/images/rest.png"),
+    disacount: "30%",
   },
   {
-    id: 4,
-    title: "",
-    date: "",
-    bgColor: "#d3d3d3", // gray (empty)
-    image: null,
+    id: "4",
+    title: "Bella Vista",
+    rating: 4,
+    description: "Experience fine dining with a modern twist...",
+    image: require("../../../../assets/images/rest.png"),
+    disacount: "25%",
+  },
+  {
+    id: "5",
+    title: "Ocean Breeze",
+    rating: 5,
+    description: "Seafood specialties with ocean views...",
+    image: require("../../../../assets/images/rest.png"),
+    disacount: "40%",
+  },
+  {
+    id: "6",
+    title: "Mountain Grill",
+    rating: 4,
+    description: "Grilled meats and local specialties...",
+    image: require("../../../../assets/images/rest.png"),
+    disacount: "35%",
+  },
+  {
+    id: "7",
+    title: "Urban Cafe",
+    rating: 3,
+    description: "Coffee and pastries in a cozy atmosphere...",
+    image: require("../../../../assets/images/rest.png"),
+    disacount: "20%",
+  },
+  {
+    id: "8",
+    title: "Spice Route",
+    rating: 5,
+    description: "Authentic Asian cuisine with bold flavors...",
+    image: require("../../../../assets/images/rest.png"),
+    disacount: "45%",
   },
 ];
 
-const CollectionMain = () => {
+const StarRating = ({ rating }) => {
   return (
-    <>
-    <ScrollView contentContainerStyle={{marginBottom: ''}}>
-      <View style={styles.container}>
-        <View style={styles.grid}>
-          {data.map((item) => (
-            <View key={item.id} style={styles.cardWrapper}>
-              <View style={[styles.card, { backgroundColor: item.bgColor }]}>
-                {/* Logo */}
-                <Image
-                  source={require("../../../../assets/images/pengiun-logo.png")}
-                  style={styles.logo}
-                />
-
-                {/* Main image */}
-                {item.image && (
-                  <Image source={item.image} style={styles.mainImage} />
-                )}
-
-                {/* Title & Date */}
-                {item.title ? (
-                  <>
-                    <Text style={styles.title}>{item.title}</Text>
-                    <Text style={styles.date}>{item.date}</Text>
-                  </>
-                ) : null}
-              </View>
-
-              {/* Share Button */}
-              {item.title ? (
-                <TouchableOpacity style={styles.shareBtn}>
-                  <Image
-                    source={require("../../../../assets/images/icons/share-icon.png")}
-                    style={styles.shareIcon}
-                  />
-                  <Text style={styles.shareText}>Share Memory</Text>
-                </TouchableOpacity>
-              ) : null}
-            </View>
-          ))}
-        </View>
-      </View>
-    </ScrollView>
-    <BottomNav/>
-    </>
+    <View style={{ flexDirection: "row", marginVertical: 4 }}>
+      {[...Array(5)].map((_, i) => (
+        <FontAwesome
+          key={i}
+          name="star"
+          size={16}
+          color={i < rating ? "#7C3AED" : "#C4C4C4"}
+        />
+      ))}
+    </View>
   );
 };
 
-export default CollectionMain;
+export default function CollectionMain() {
+  return (
+    <>
+      <ScrollView style={{ backgroundColor: "#fff" }}>
+        <FlatList
+          contentContainerStyle={{ padding: 16 }}
+          data={data}
+          keyExtractor={(item) => item.id}
+          renderItem={({ item }) => (
+            <View style={styles.card}>
+              <View style={{ flex: 1 }}>
+                <View
+                  style={{
+                    flexDirection: "row",
+                    justifyContent: "space-between",
+                  }}
+                >
+                  <Text style={styles.title}>{item.title}</Text>
+                  <StarRating rating={item.rating} />
+                </View>
+                <Text style={styles.note}>Note:</Text>
+                <Text style={styles.desc}>{item.description}</Text>
+                <View style={{flexDirection: 'row', justifyContent: 'flex-start'}}>
+                  <Image
+                    source={require("../../../../assets/images/icons/discount-coupon.png")}
+                    style={{ height: 29, width: 29, marginTop: 5 }}
+                  />
+                  <Text style={{fontSize: 29,
+                    fontFamily: "Poppins-Bold",
+                    color: "#6A14DC"
+                  }}>
+                    {item.disacount}
+                  </Text>
+                </View>
+              </View>
+              <Image source={item.image} style={styles.image} />
+            </View>
+          )}
+        />
+      </ScrollView>
+      <BottomNav />
+    </>
+  );
+}
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "white",
-    padding: 10,
-  },
-  grid: {
-    flexDirection: "row",
-    flexWrap: "wrap",
-    justifyContent: "space-between",
-  },
-  cardWrapper: {
-    width: "48%",
-    marginBottom: 20,
-  },
   card: {
+    backgroundColor: "#F1F2F3",
     borderRadius: 12,
-    overflow: "hidden",
-    alignItems: "center",
     padding: 10,
-  },
-  logo: {
-    height: 28,
-    width: 28,
-    marginBottom: 5,
-  },
-  mainImage: {
-    width: "100%",
-    height: 80,
-    resizeMode: "cover",
-    borderRadius: 8,
-    marginBottom: 5,
+    marginBottom: 16,
+    flexDirection: "row",
   },
   title: {
-    color: "white",
-    fontWeight: "600",
+    fontFamily: "Poppins-SemiBold",
+    fontSize: 16,
+    marginBottom: 4,
+  },
+  note: {
+    fontFamily: "Poppins-Medium",
+    marginTop: 4,
+    color: "#000000",
     fontSize: 11,
-    textAlign: "center",
+    textDecorationLine: "underline",
   },
-  date: {
-    color: "white",
-    fontSize: 12,
-    marginTop: 2,
-    fontWeight: '700',
-    textAlign: "center",
+  desc: {
+    fontSize: 14,
+    color: "#000000",
+    fontFamily: "Poppins-Medium",
   },
-  shareBtn: {
-    alignItems: "center",
-    marginTop: 6,
-  },
-  shareIcon: {
-    height: 20,
-    width: 20,
-    marginBottom: 2,
-    tintColor: "black",
-  },
-  shareText: {
-    fontSize: 12,
-    fontWeight: "500",
+  image: {
+    width: 121,
+    height: 116,
+    borderRadius: 10,
+    marginLeft: 16,
   },
 });

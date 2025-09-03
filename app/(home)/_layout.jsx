@@ -56,7 +56,7 @@ export default function DrawerNavigator() {
           headerTitleAlign: "center",
           headerBackground: () => (
             <Image
-              source={require("../../assets/images/purpleBg.png")}
+              source={require("../../assets/images/2.png")}
               style={{
                 width: "100%",
                 height: "100%",
@@ -102,7 +102,7 @@ export default function DrawerNavigator() {
           headerTitleAlign: "center",
           headerBackground: () => (
             <Image
-              source={require("../../assets/images/purpleBg.png")}
+              source={require("../../assets/images/1.png")}
               style={{
                 width: "100%",
                 height: "100%",
@@ -139,7 +139,7 @@ export default function DrawerNavigator() {
           headerTitleAlign: "center",
           headerBackground: () => (
             <Image
-              source={require("../../assets/images/purpleBg.png")}
+              source={require("../../assets/images/1.png")}
               style={{
                 width: "100%",
                 height: "100%",
@@ -176,7 +176,7 @@ export default function DrawerNavigator() {
           headerTitleAlign: "center",
           headerBackground: () => (
             <Image
-              source={require("../../assets/images/purpleBg.png")}
+              source={require("../../assets/images/1.png")}
               style={{
                 width: "100%",
                 height: "100%",
@@ -279,7 +279,6 @@ export default function DrawerNavigator() {
           },
         })}
       /> */}
-
       <Drawer.Screen
         name="My Profile"
         component={Profile}
@@ -451,7 +450,7 @@ export default function DrawerNavigator() {
         name="Vouchers"
         component={Vouchers}
         options={({ navigation }) => ({
-          title: "Collections",
+          title: "Vouchers",
           headerTitleStyle: {
             color: "#fff",
             fontSize: 22,
@@ -614,39 +613,6 @@ export default function DrawerNavigator() {
           headerLeft: () => <BackBtn />,
         })}
       />
-      {/* <Drawer.Screen
-        name="Explore"
-        component={Explore}
-        options={({ navigation }) => ({
-          title: "Top Trending",
-          headerTitleStyle: {
-            color: "#fff",
-            fontSize: 22,
-            fontWeight: "800",
-          },
-          headerTitleAlign: "center",
-          headerBackground: () => (
-            <Image
-              source={require("../../assets/images/purpleBg.png")}
-              style={{
-                width: "100%",
-                height: "100%",
-                borderBottomLeftRadius: 40,
-                borderBottomRightRadius: 40,
-              }}
-              resizeMode="cover"
-            />
-          ),
-          headerStyle: {
-            height: 120,
-            backgroundColor: "transparent",
-          },
-          drawerIcon: () => (
-            <Image source={require("../../assets/images/icons/update.png")} />
-          ),
-          headerLeft: () => <BackBtn />,
-        })}
-      /> */}
     </Drawer.Navigator>
   );
 }

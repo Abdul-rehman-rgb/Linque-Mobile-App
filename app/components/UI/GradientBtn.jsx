@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
     width: '100%',
   },
   gradient: {
-    paddingVertical: 12,
+    height: 40,
     paddingHorizontal: 16,
     borderRadius: 25,
     alignItems: 'center',

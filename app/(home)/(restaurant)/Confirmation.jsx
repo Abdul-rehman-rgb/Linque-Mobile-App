@@ -86,7 +86,7 @@ const Confirmation = () => {
       <Header
         title="Restaurant 1"
         onBack={() => router.back()}
-        backgroundImage={require("../../../assets/images/purpleBg.png")}
+        backgroundImage={require("../../../assets/images/1.png")}
       />
 
       <ScrollView

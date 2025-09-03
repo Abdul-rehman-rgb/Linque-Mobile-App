@@ -1,3 +1,4 @@
+import { router } from "expo-router";
 import {
   Dimensions,
   Image,
@@ -7,7 +8,8 @@ import {
   Text,
   View,
 } from "react-native";
-import BottomNav from "../components/BottomNav";
+import BottomNav from "./components/BottomNav";
+import Header from "./components/UI/Header";
 
 const { width } = Dimensions.get("window");
 
@@ -89,9 +91,14 @@ const Explore = () => {
 
   return (
     <ImageBackground
-      source={require("../../assets/images/trendBg.png")}
+      source={require("../assets/images/explorebg.png")}
       style={styles.background}
     >
+      <Header
+        title="Top Trandng"
+        onBack={() => router.back()}
+        backgroundImage={require("../assets/images/1.png")}
+      />
       <ScrollView contentContainerStyle={styles.scrollContent}>
         <View
           style={{
@@ -102,7 +109,7 @@ const Explore = () => {
             marginVertical: 20,
           }}
         >
-          <Text style={styles.headerText}>Explore More</Text>
+          {/* <Text style={styles.headerText}>Explore More</Text> */}
         </View>
         <View style={styles.container}>
           {trendings.map((item, idx) => (
@@ -133,6 +140,7 @@ export default Explore;
 const styles = StyleSheet.create({
   background: {
     flex: 1,
+    height: "auto",
   },
   scrollContent: {
     paddingVertical: 16,
@@ -151,7 +159,7 @@ const styles = StyleSheet.create({
   item: {
     alignItems: "center",
     marginRight: 16,
-    marginBlock: 10
+    marginBlock: 10,
   },
   imageWrapper: {
     width: 97,

@@ -33,7 +33,7 @@ const index = () => {
       <Header
         title={`Restaurant`}
         onBack={goBack}
-        backgroundImage={require("../../../assets/images/purpleBg.png")}
+        backgroundImage={require("../../../assets/images/2.png")}
       />
 
       <ScrollView

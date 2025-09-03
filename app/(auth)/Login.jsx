@@ -139,7 +139,7 @@ const Login = () => {
               </TouchableOpacity>
 
               <View style={{ flexDirection: "row", marginTop: 32 }}>
-                <Text style={{ color: "gray", fontSize: 14 }}>
+                <Text style={{ color: "white", fontSize: 14 }}>
                   Don't have an account?{" "}
                 </Text>
                 <TouchableOpacity onPress={() => router.navigate("/Signup")}>
@@ -235,7 +235,7 @@ const styles = StyleSheet.create({
   background: {
     flex: 1,
     width: "100%",
-    height: "100%",
+    height: "110%",
   },
 });
 

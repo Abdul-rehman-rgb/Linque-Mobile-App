@@ -3,7 +3,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import axios from "axios";
 import React, { createContext, useContext, useState } from "react";
 
-const API_BASE = "http://192.168.21.11:5000"; 
+const API_BASE = "http://192.168.88.253:5000"; 
 const UserContext = createContext();
 
 export const useUserData = () => useContext(UserContext);

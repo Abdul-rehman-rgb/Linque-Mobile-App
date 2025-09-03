@@ -28,7 +28,7 @@ const HubData = [
     subtitle: "Book your event passes",
     //route: "/live-events",
     img: {
-      uri: "https://images.unsplash.com/photo-1515168833906-d2a3b82b3029?auto=format&fit=crop&w=400&q=80",
+      uri: "https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=400&q=80",
     },
   }
 ];

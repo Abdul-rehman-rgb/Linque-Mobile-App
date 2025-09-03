@@ -1,22 +1,26 @@
 import { Image, ImageBackground, StyleSheet, Text, View } from "react-native";
-import DatePickerButton from "..//UI/DatePickerBtn";
+import DatePickerButton from "../UI/DatePickerBtn"; // fixed double slash
+
+// Import icons
+import calendarIcon from "../../../assets/images/icons/calendar2.png";
 
 const BookingCard = ({ title, bgImage, ratingImage }) => {
   return (
     <View style={styles.wrapper}>
-      <ImageBackground
-        source={bgImage}
-        resizeMode="cover"
-        style={styles.bg}
-      >
+      <ImageBackground source={bgImage} resizeMode="cover" style={styles.bg}>
         <View style={styles.topRow}>
           <Text style={styles.title}>{title}</Text>
           <Image source={ratingImage} style={styles.icon} />
         </View>
-
         <View style={styles.btnRow}>
-          <DatePickerButton />
-          <DatePickerButton />
+          <DatePickerButton
+            icon={calendarIcon}
+            buttonStyle={styles.smallBtn}
+          />
+          <DatePickerButton
+            icon={calendarIcon}
+            buttonStyle={styles.smallBtn}
+          />
         </View>
       </ImageBackground>
     </View>
@@ -27,11 +31,7 @@ export default BookingCard;
 
 const styles = StyleSheet.create({
   wrapper: {
-    backgroundColor: "#DCDCDC",
-    borderColor: "#707070",
-    borderWidth: 1,
-    padding: 5,
-    borderRadius: 10,
+   padding: 5
   },
   bg: {
     padding: 15,
@@ -57,5 +57,11 @@ const styles = StyleSheet.create({
   btnRow: {
     flexDirection: "row",
     gap: 10,
+    justifyContent: "center"
+  },
+  smallBtn: {
+    paddingVertical: 6,
+    paddingHorizontal: 10,
+    borderRadius: 20,
   },
 });

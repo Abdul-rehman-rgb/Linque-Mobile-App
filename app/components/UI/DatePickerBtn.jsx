@@ -1,9 +1,22 @@
 import DateTimePicker from "@react-native-community/datetimepicker";
 import { useState } from "react";
-import { Platform } from "react-native";
-import GradientBtn from "../UI/GradientBtn";
+import {
+  Image,
+  Platform,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
+import { LinearGradient } from "expo-linear-gradient"; // Or react-native-linear-gradient
 
-const DatePickerBtn = ({ initialDate = new Date(), onDateChange }) => {
+const DatePickerBtn = ({
+  initialDate = new Date(),
+  onDateChange,
+  icon,
+  buttonStyle,
+  textStyle,
+}) => {
   const [date, setDate] = useState(initialDate);
   const [show, setShow] = useState(false);
   const [selectedDate, setSelectedDate] = useState("");
@@ -20,7 +33,20 @@ const DatePickerBtn = ({ initialDate = new Date(), onDateChange }) => {
 
   return (
     <>
-      <GradientBtn title={selectedDate || "Select Date"} onPress={() => setShow(true)} />
+      <TouchableOpacity onPress={() => setShow(true)} activeOpacity={0.8}>
+        <LinearGradient
+          colors={["#7118DE", "#BF4AF1"]}
+          start={{ x: 0, y: 0 }}
+          end={{ x: 1, y: 0 }}
+          style={[styles.button, buttonStyle]}
+        >
+          {icon && <Image source={icon} style={styles.icon} />}
+          <Text style={[styles.text, textStyle]}>
+            {selectedDate || "Select Date"}
+          </Text>
+        </LinearGradient>
+      </TouchableOpacity>
+
       {show && (
         <DateTimePicker
           value={date}
@@ -34,3 +60,24 @@ const DatePickerBtn = ({ initialDate = new Date(), onDateChange }) => {
 };
 
 export default DatePickerBtn;
+
+const styles = StyleSheet.create({
+  button: {
+    flexDirection: "row",
+    alignItems: "center",
+    paddingVertical: 8,
+    paddingHorizontal: 12,
+    borderRadius: 20,
+  },
+  icon: {
+    width: 10,
+    height: 10,
+    marginRight: 6,
+    resizeMode: "contain",
+  },
+  text: {
+    fontSize: 14,
+    color: "#fff",
+    fontWeight: "500",
+  },
+});

@@ -80,7 +80,12 @@ export default function HomeStories() {
       <View style={styles.overlay}>
         <View style={styles.headerRow}>
           <Text style={styles.headerText}>Top Trending</Text>
-          <TouchableOpacity onPress={() => router.push("Explore")}>
+          <TouchableOpacity onPress={() => {
+           console.log("Explore More button pressed");
+           console.log("Attempting to navigate to Explore");
+           router.push("Explore");
+           console.log("router.push called");
+         }}>
             <Text style={styles.exploreText}>Explore More</Text>
           </TouchableOpacity>
         </View>

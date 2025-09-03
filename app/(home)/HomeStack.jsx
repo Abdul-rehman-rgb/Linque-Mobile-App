@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
   hubSection: {
     flex: 1,
     backgroundColor: "white",
-    marginTop: 24,
+    marginTop: 2,
     borderTopLeftRadius: 24,
     borderTopRightRadius: 24,
     paddingHorizontal: 20,
